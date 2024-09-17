@@ -1,4 +1,4 @@
-import { DropdownColumn } from '@/components/NavLink/types';
+import { DropdownColumn } from '@/components/ui/NavLink/types';
 import { Dispatch, SetStateAction } from 'react';
 
 export interface DropdownMenuProps {
