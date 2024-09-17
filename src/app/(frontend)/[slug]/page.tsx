@@ -8,8 +8,8 @@ import React, { cache } from 'react';
 
 import type { Page as PageType } from '@/payload-types';
 
-import { RenderBlocks } from '@/blocks/RenderBlocks';
 import { generateMeta } from '@/utilities/generateMeta';
+import { RenderBlocks } from '@/blocks/RenderBlocks';
 
 export async function generateStaticParams() {
   const payload = await getPayloadHMR({ config: configPromise });
@@ -30,9 +30,7 @@ export async function generateStaticParams() {
 export default async function Page({ params: { slug = 'home' } }) {
   const url = '/' + slug;
 
-  let page: PageType | null;
-
-  page = await queryPageBySlug({
+  const page: PageType | null = await queryPageBySlug({
     slug,
   });
 

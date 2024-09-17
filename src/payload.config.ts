@@ -127,7 +127,7 @@ export default buildConfig({
     redirectsPlugin({
       collections: ['pages', 'posts'],
       overrides: {
-        // @ts-expect-error
+        // @ts-expect-error - some expected error from payload
         fields: ({ defaultFields }) => {
           return defaultFields.map((field) => {
             if ('name' in field && field.name === 'from') {
