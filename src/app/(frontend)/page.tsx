@@ -1,5 +1,9 @@
-import PageTemplate, { generateMetadata } from './[slug]/page'
+import HomePageContent from './(page-content)/HomePage';
 
-export default PageTemplate
-
-export { generateMetadata }
+export default function Home() {
+  return (
+    <>
+      <HomePageContent />
+    </>
+  );
+}
