@@ -9,7 +9,6 @@ import React, { cache } from 'react'
 import type { Page as PageType } from '@/payload-types'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 
 export async function generateStaticParams() {
@@ -48,7 +47,6 @@ export default async function Page({ params: { slug = 'home' } }) {
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
-      <RenderHero {...hero} />
       <RenderBlocks blocks={layout} />
     </article>
   )
