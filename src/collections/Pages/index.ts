@@ -1,16 +1,16 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
-import { authenticated } from '../../access/authenticated'
-import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { slugField } from '@/fields/slug'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { generatePreviewPath } from '../../utilities/generatePreviewPath'
-import { revalidatePage } from './hooks/revalidatePage'
+import { authenticated } from '../../access/authenticated';
+import { authenticatedOrPublished } from '../../access/authenticatedOrPublished';
+import { Archive } from '../../blocks/ArchiveBlock/config';
+import { CallToAction } from '../../blocks/CallToAction/config';
+import { Content } from '../../blocks/Content/config';
+import { FormBlock } from '../../blocks/Form/config';
+import { MediaBlock } from '../../blocks/MediaBlock/config';
+import { slugField } from '@/fields/slug';
+import { populatePublishedAt } from '../../hooks/populatePublishedAt';
+import { generatePreviewPath } from '../../utilities/generatePreviewPath';
+import { revalidatePage } from './hooks/revalidatePage';
 
 import {
   MetaDescriptionField,
@@ -18,7 +18,7 @@ import {
   MetaTitleField,
   OverviewField,
   PreviewField,
-} from '@payloadcms/plugin-seo/fields'
+} from '@payloadcms/plugin-seo/fields';
 export const Pages: CollectionConfig = {
   slug: 'pages',
   access: {
@@ -33,12 +33,14 @@ export const Pages: CollectionConfig = {
       url: ({ data }) => {
         const path = generatePreviewPath({
           path: `/${typeof data?.slug === 'string' ? data.slug : ''}`,
-        })
-        return `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`
+        });
+        return `${process.env.NEXT_PUBLIC_SERVER_URL}${path}`;
       },
     },
     preview: (doc) =>
-      generatePreviewPath({ path: `/${typeof doc?.slug === 'string' ? doc.slug : ''}` }),
+      generatePreviewPath({
+        path: `/${typeof doc?.slug === 'string' ? doc.slug : ''}`,
+      }),
     useAsTitle: 'title',
   },
   fields: [
@@ -111,4 +113,4 @@ export const Pages: CollectionConfig = {
     },
     maxPerDoc: 50,
   },
-}
+};

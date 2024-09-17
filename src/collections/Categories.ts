@@ -1,7 +1,7 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
-import { anyone } from '../access/anyone'
-import { authenticated } from '../access/authenticated'
+import { anyone } from '../access/anyone';
+import { authenticated } from '../access/authenticated';
 
 const Categories: CollectionConfig = {
   slug: 'categories',
@@ -21,6 +21,6 @@ const Categories: CollectionConfig = {
       required: true,
     },
   ],
-}
+};
 
-export default Categories
+export default Categories;

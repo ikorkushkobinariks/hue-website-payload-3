@@ -1,23 +1,23 @@
-import type { StaticImageData } from 'next/image'
+import type { StaticImageData } from 'next/image';
 
-import { cn } from 'src/utilities/cn'
-import React from 'react'
-import RichText from '@/components/RichText'
+import { cn } from 'src/utilities/cn';
+import React from 'react';
+import RichText from '@/components/RichText';
 
-import type { Page } from '@/payload-types'
+import type { Page } from '@/payload-types';
 
-import { Media } from '../../components/Media'
+import { Media } from '../../components/Media';
 
 type Props = Extract<Page['layout'][0], { blockType: 'mediaBlock' }> & {
-  breakout?: boolean
-  captionClassName?: string
-  className?: string
-  enableGutter?: boolean
-  id?: string
-  imgClassName?: string
-  staticImage?: StaticImageData
-  disableInnerContainer?: boolean
-}
+  breakout?: boolean;
+  captionClassName?: string;
+  className?: string;
+  enableGutter?: boolean;
+  id?: string;
+  imgClassName?: string;
+  staticImage?: StaticImageData;
+  disableInnerContainer?: boolean;
+};
 
 export const MediaBlock: React.FC<Props> = (props) => {
   const {
@@ -29,10 +29,10 @@ export const MediaBlock: React.FC<Props> = (props) => {
     position = 'default',
     staticImage,
     disableInnerContainer,
-  } = props
+  } = props;
 
-  let caption
-  if (media && typeof media === 'object') caption = media.caption
+  let caption;
+  if (media && typeof media === 'object') caption = media.caption;
 
   return (
     <div
@@ -50,7 +50,11 @@ export const MediaBlock: React.FC<Props> = (props) => {
         </div>
       )}
       {position === 'default' && (
-        <Media imgClassName={cn('rounded', imgClassName)} resource={media} src={staticImage} />
+        <Media
+          imgClassName={cn('rounded', imgClassName)}
+          resource={media}
+          src={staticImage}
+        />
       )}
       {caption && (
         <div
@@ -66,5 +70,5 @@ export const MediaBlock: React.FC<Props> = (props) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};

@@ -1,6 +1,6 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
-import { authenticated } from '../../access/authenticated'
+import { authenticated } from '../../access/authenticated';
 
 const Users: CollectionConfig = {
   slug: 'users',
@@ -23,6 +23,6 @@ const Users: CollectionConfig = {
     },
   ],
   timestamps: true,
-}
+};
 
-export default Users
+export default Users;

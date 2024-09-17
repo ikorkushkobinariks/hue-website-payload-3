@@ -1,35 +1,35 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
 
-import { RelatedPosts } from '@/blocks/RelatedPosts/Component'
-import { PayloadRedirects } from '@/components/PayloadRedirects'
-import configPromise from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
-import { draftMode } from 'next/headers'
-import React, { cache } from 'react'
-import RichText from '@/components/RichText'
+import { RelatedPosts } from '@/blocks/RelatedPosts/Component';
+import { PayloadRedirects } from '@/components/PayloadRedirects';
+import configPromise from '@payload-config';
+import { getPayloadHMR } from '@payloadcms/next/utilities';
+import { draftMode } from 'next/headers';
+import React, { cache } from 'react';
+import RichText from '@/components/RichText';
 
-import type { Post } from '@/payload-types'
+import type { Post } from '@/payload-types';
 
-import { generateMeta } from '@/utilities/generateMeta'
-import PageClient from './page.client'
+import { generateMeta } from '@/utilities/generateMeta';
+import PageClient from './page.client';
 
 export async function generateStaticParams() {
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayloadHMR({ config: configPromise });
   const posts = await payload.find({
     collection: 'posts',
     draft: false,
     limit: 1000,
     overrideAccess: false,
-  })
+  });
 
-  return posts.docs?.map(({ slug }) => slug)
+  return posts.docs?.map(({ slug }) => slug);
 }
 
 export default async function Post({ params: { slug = '' } }) {
-  const url = '/posts/' + slug
-  const post = await queryPostBySlug({ slug })
+  const url = '/posts/' + slug;
+  const post = await queryPostBySlug({ slug });
 
-  if (!post) return <PayloadRedirects url={url} />
+  if (!post) return <PayloadRedirects url={url} />;
 
   return (
     <article className="pt-16 pb-16">
@@ -55,23 +55,23 @@ export default async function Post({ params: { slug = '' } }) {
         )}
       </div>
     </article>
-  )
+  );
 }
 
 export async function generateMetadata({
   params: { slug },
 }: {
-  params: { slug: string }
+  params: { slug: string };
 }): Promise<Metadata> {
-  const post = await queryPostBySlug({ slug })
+  const post = await queryPostBySlug({ slug });
 
-  return generateMeta({ doc: post })
+  return generateMeta({ doc: post });
 }
 
 const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
-  const { isEnabled: draft } = draftMode()
+  const { isEnabled: draft } = draftMode();
 
-  const payload = await getPayloadHMR({ config: configPromise })
+  const payload = await getPayloadHMR({ config: configPromise });
 
   const result = await payload.find({
     collection: 'posts',
@@ -83,7 +83,7 @@ const queryPostBySlug = cache(async ({ slug }: { slug: string }) => {
         equals: slug,
       },
     },
-  })
+  });
 
-  return result.docs?.[0] || null
-})
+  return result.docs?.[0] || null;
+});
